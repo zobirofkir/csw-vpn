@@ -1,21 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import WelcomeScreen from './app/Welcome/WelcomeScreen';
+import { createStackNavigator } from '@react-navigation/stack';
+import AboutScreen from './app/Screens/AboutScreen';
+import HomeScreen from './app/Screens/HomeScreen'
+import WelcomeScreenTwo from './app/Welcome/WelcomeTwo';
+import PrivacyPolicyScreen from './app/Screens/PrivacyPolicyScreen';
+import welcomeScreenThree from './app/Welcome/welcomeScreenThree';
 
+
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+      <Stack.Screen name='Welcome' component={WelcomeScreen} options={{headerShown: false}}/>
+      <Stack.Screen name='WelcomeTwo' component={WelcomeScreenTwo} options={{headerShown: false}}/>
+      <Stack.Screen name='WelcomeThree' component={welcomeScreenThree} options={{headerShown: false}}/>
+      <Stack.Screen name='About' component={AboutScreen} options={{headerShown: false}}/>
+      <Stack.Screen name='Home' component={HomeScreen} options={{headerShown: false}}/>
+      <Stack.Screen name='Privacy' component={PrivacyPolicyScreen} options={{headerShown: false}}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
